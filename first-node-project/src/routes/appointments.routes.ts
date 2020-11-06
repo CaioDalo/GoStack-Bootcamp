@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { parseISO } from 'date-fns'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
-import CreateAppointmentServide from '../services/CreateAppointmentService'
+import CreateAppointmentService from '../services/CreateAppointmentService'
 
 const appointmentsRouter = Router()
 
@@ -19,7 +19,7 @@ appointmentsRouter.post('/', (request, response) => {
 
     const parsedDate = parseISO(date)
 
-    const createAppointment = new CreateAppointmentServide(appointmentsRepository)
+    const createAppointment = new CreateAppointmentService(appointmentsRepository)
 
     const appointment = createAppointment.execute({provider, date: parsedDate})
 
